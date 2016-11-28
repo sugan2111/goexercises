@@ -1,7 +1,44 @@
 package main
 
+import (
+	"fmt"
+	"strings"
+)
+
 func main() {
-	// Implment your solution here
+	fmt.Println(charliesTeam())
+	fmt.Println(peopleOnFloorFive())
+	fmt.Println(peopleWorkingInProduct())
+}
+
+func charliesTeam() []string {
+	charliesteam := make([]string, 0)
+	for name, dets := range People {
+		if strings.ToLower(dets.manager) == "charlie" {
+			charliesteam = append(charliesteam, name)
+		}
+	}
+	return charliesteam
+}
+
+func peopleOnFloorFive() []string {
+	fifthfloor := make([]string, 0)
+	for name, dets := range People {
+		if dets.floor == 5 {
+			fifthfloor = append(fifthfloor, name)
+		}
+	}
+	return fifthfloor
+}
+
+func peopleWorkingInProduct() []string {
+	productowners := make([]string, 0)
+	for name, dets := range People {
+		if strings.ToLower(dets.dept) == "product" {
+			productowners = append(productowners, name)
+		}
+	}
+	return productowners
 }
 
 type details struct {
