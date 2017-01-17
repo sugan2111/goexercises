@@ -66,27 +66,42 @@ var People = map[string]details{
 	},
 }
 
-func main() {
-
-	fmt.Println("Employees working in Development in 5th floor:")
+func function1() []string {
+	devIn5th := make([]string, 0)
 	for v, k := range People {
 		if k.dept == "Product" && k.floor == 5 {
-			fmt.Println(v)
+			devIn5th = append(devIn5th, v)
 		}
 	}
+	return devIn5th
+}
 
-	fmt.Println("Employees having Charlie as manager:")
+func function2() []string {
+	charlieTeam := make([]string, 0)
 	for v, k := range People {
 		if k.manager == "Charlie" {
-			fmt.Println(v)
+			charlieTeam = append(charlieTeam, v)
 		}
 	}
+	return charlieTeam
+}
 
-	fmt.Println("Employees working on Product:")
+func function3() []string {
+	productTeam := make([]string, 0)
 	for v, k := range People {
 		if k.dept == "Product" {
-			fmt.Println(v)
+			productTeam = append(productTeam, v)
 		}
 	}
+	return productTeam
+}
 
+func main() {
+
+	fmt.Println("Developers in 5th floor:")
+	fmt.Println(function1())
+	fmt.Println("People in Charlie's Team:")
+	fmt.Println(function2())
+	fmt.Println("People in Product Dept:")
+	fmt.Println(function3())
 }
